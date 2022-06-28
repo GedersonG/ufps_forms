@@ -1,0 +1,32 @@
+<%- include('./partials/_header'); %> 
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Fecha FIN</th>
+                    <th>Preguntas</th>
+                    
+                </thead>
+                <tbody>
+                    <%= console.log(data) %>
+                    <% if(data) { %>
+                        <% for (var i=0; i< data.length ; ++i) {%>
+                            <tr>
+                                <td><%= data[i].titulo %> </td>
+                                <td><%= data[i].descripcion %> </td>
+                                <td><%= data[i].fecha %> </td>
+                                <td><a type="button" href="/pregunta/<%= data[i].id_encuestado %>" class="btn btn-primary rounded-3">Preguntas</a></td>
+                            </tr>
+                        <% } %>
+                    <% } %> 
+                </tbody>
+            </table>
+        </div>
+        <br>
+    </div>
+</div>
+<%- include('./partials/_footer'); %> 

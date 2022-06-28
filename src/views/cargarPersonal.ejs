@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/cargarPersonal.css" rel="stylesheet" type="text/css" />
+  <title>>UFPS-Forms</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<%- include('./partials/_body'); %> 
+
+  <div class="container-fluid row mx-1 mt-0 mx-0" >
+
+    <!--navbar-->
+    <%- include('./partials/_menu'); %> 
+    
+    <!--encuestas-->
+  <div class="col-sm-10 col-md-10" >
+  <!--titulo-->
+  <div class="mt-4" id="titulo2">
+  <h1>Poblacion</h1>
+  </div>
+    
+  <div class="container-fluid row mx-1 mt-2 " id="cuerpo">
+  <table class="table table-bordered" style="text-align:center;" id="tabla">
+        <thead class="thead-dark" style="background: grey">
+        <tr >
+          <th scope="col">Población</th>
+          <th scope="col">Visualizar</th>
+          <th scope="col">Cargar archivo</th>
+          <th scope="col">Enviar</th>
+        </tr>
+        </thead>
+      <tbody>
+        <tr>
+          <td>Estudiantes</td>
+          <td><a type="button" class="btn  rounded-5 " id="boton" href="encuestados/poblacion/1">Visualizar</a></td>
+          <td><input type="file" class="btn  rounded-5 " id="boton" ></input></td>
+    <td><button type="button" class="btn  rounded-5 ">Enviar</button></td>
+        </tr>
+        <tr>
+          <td>Docentes</td>
+          <td><a type="button" class="btn rounded-5 " id="boton" href="encuestados/poblacion/2">Visualizar</a></td>
+          <td><input type="file" class="btn  rounded-5 " id="boton" ></input></td>
+    <td><button type="button" class="btn  rounded-5 ">Enviar</button></td>      
+  </tr>
+        <tr>
+          <td>Egresados</td>
+          <td><a type="button" class="btn rounded-5 " id="boton" href="encuestados/poblacion/3">Visualizar</a></td>
+          <td><input type="file" class="btn  rounded-5 " id="boton" ></input></td>
+    <td><button type="button" class="btn  rounded-5 ">Enviar</button></td>      
+  </tr>
+      </tbody>
+    </table>
+    
+    <div class="col-md-5">
+      <div class="card">
+          <div class="card-body">
+              <form action="/encuestados/save" method="post">
+                  <div class="form-group mt-1">
+                      <input type="text" name="correo" placeholder="correo" class="form-control" value="">
+                  </div>
+                  <div class="form-group mt-1">
+                      <select style="width:100%" name="id_poblacion"class="form-select" aria-label="Default select example">
+                          <option value="1" selected>Estudiante</option>
+                          <option value="2">Docente</option>
+                          <option value="3">Egresado</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-1">
+                      Añadir nuevo usuario
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+    </div>
+    </div>
+  </div>
+  
+
+  <script src="../js/cargarPersonal.js"></script>
+</body>
+</html>

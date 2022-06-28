@@ -1,0 +1,28 @@
+<%- include('./partials/_header'); %>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/pregunta/add/<%= data.id_encuesta %>" method="post">
+                        <input type="hidden" value="<%= data.id_encuesta %>" name="id_encuesta">
+                        <div class="form-group mt-1">
+                            <input type="text" name="enunciado" placeholder="Enunciado" class="form-control">
+                        </div>
+                        <div class="form-group mt-1">
+                            <select style="width:100%" name="id_tipo"class="form-select" aria-label="Default select example">
+                                <option value="1" selected>Única selección</option>
+                                <option value="2">Múltiple selección</option>
+                                <option value="3">Abierta</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-1">
+                            Crear Pregunta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

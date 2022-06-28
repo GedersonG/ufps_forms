@@ -1,0 +1,66 @@
+<%- include('./partials/_header'); %> 
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md text-aling-center">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>ID Encuesta</th>
+                    <th>Poblacion</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Fecha FIN</th>
+                    <th>Habilitada</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        <% for (var i=0; i< data.length ; ++i) {%>
+                            <tr>
+                                <td><%= data[i].id_encuesta %> </td>
+                                <td><%= data[i].nombre %> </td>
+                                <td><%= data[i].titulo %> </td>
+                                <td><%= data[i].descripcion %> </td>
+                                <td><%= data[i].fecha %> </td>
+                                <td><%= data[i].habilitada %> </td>
+                                <td><a type="button" href="pregunta/add/<%= data[i].id_encuesta %>" class="btn btn-primary rounded-3">Añadir Pregunta</a>
+                                    <a type="button" href="pregunta/<%= data[i].id_encuesta %>" class="btn btn-primary rounded-3 mt-2">Ver Preguntas</a></td>
+                                </tr>
+                        <% } %>
+                    <% } %> 
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/encuesta/save" method="post">
+                        <div class="form-group mt-1">
+                            <input type="text" name="titulo" placeholder="Titulo" class="form-control" value="">
+                        </div>
+                        <div class="form-group mt-1">
+                            <input type="text" name="descripcion" placeholder="Descripción" class="form-control" value="">
+                        </div>
+                        <div class="form-group mt-1" id="fechahoy">
+                            <input type="date" name="fecha" placeholder="Titulo" class="form-control" min="2022-06-25" value="">
+                        </div>
+                        <div class="form-group mt-1">
+                            <select style="width:100%" name="id_poblacion"class="form-select" aria-label="Default select example">
+                                <option value="1" selected>Estudiante</option>
+                                <option value="2">Docente</option>
+                                <option value="3">Egresado</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-1">
+                            Añadir nueva encuesta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../public/js/encuesta.js"></script>
+
+<%- include('./partials/_footer'); %> 

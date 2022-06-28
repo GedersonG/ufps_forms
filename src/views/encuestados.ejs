@@ -1,0 +1,52 @@
+<%- include('./partials/_header'); %> 
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>ID Encuestado</th>
+                    <th>Población</th>
+                    <th>Correo</th>
+                    <th>Encuestas</th>
+                </thead>
+                <tbody>
+                    <% if(data) { %>
+                        <% for (var i=0; i< data.length ; ++i) {%>
+                            <tr>
+                                <td><%= data[i].id_encuestado %> </td>
+                                <td><%= data[i].nombre %> </td>
+                                <td><%= data[i].correo %> </td>
+                                <td><a type="button" href="encuestados/encuestas/<%= data[i].id_encuestado %>" class="btn btn-primary rounded-3">Encuestas</a></td>
+                            </tr>
+                        <% } %>
+                    <% } %> 
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/encuestados/save" method="post">
+                        <div class="form-group mt-1">
+                            <input type="text" name="correo" placeholder="correo" class="form-control" value="">
+                        </div>
+                        <div class="form-group mt-1">
+                            <select style="width:100%" name="id_poblacion"class="form-select" aria-label="Default select example">
+                                <option value="1" selected>Estudiante</option>
+                                <option value="2">Docente</option>
+                                <option value="3">Egresado</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-1">
+                            Añadir nuevo usuario
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/_footer'); %> 

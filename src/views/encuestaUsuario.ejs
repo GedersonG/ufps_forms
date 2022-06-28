@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/encuestaUsuario.css" rel="stylesheet" type="text/css" />
+  <title>>UFPS-Forms</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<%- include('./partials/_body'); %> 
+
+  <div class="container-fluid row mx-1 mt-0 mx-0" >
+
+    <!--encuestas-->
+  <div class="col-sm-12 col-md-12" >
+  <!--titulo-->
+  <div class="mt-4" id="titulo2">
+  <h1><%= data[0].titulo %> </h1>
+  </div>
+    <div class="mt-4 ml-2" id="subt">
+  <h1><%= data[0].descripcion %> </h1>
+  </div>
+
+    <div class="container-fluid row mx-1 mt-2 " id="cuerpo">
+      <form action="" method="post">
+      <% if(data) { %>
+        <% var j = 0 %>
+        <% for (var i=0; i< data.length ; ++i) {%>
+          <% var preguntaActual = data[i].id_pregunta; %>
+  <div class="col-sm-12 col-md-12 mt-3" >
+<div class="col-sm-12 col-md-12 mt-3" >
+      <h1><%= data[i].enunciado %></h1>
+    </div>
+      <% while (data[j] != null && data[j].id_pregunta == preguntaActual){%>
+        <% if(data[j].id_tipo == '1') { %>
+    <div class="container-fluid  row mx-1">
+      <div class="d-none-2 d-lg-block col-12 col-md-12 fw-bold text center mb-4">
+      <input type="radio" name="opcion<%= data[j].id_pregunta %>" value="<%= data[j].texto %>"><%= data[j].texto %></input>
+      <br>
+      <br>   
+    </div>
+    </div>
+    <% } else if(data[j].id_tipo == '2'){ %>
+      <input type="checkbox" name="check<%= data[j].id_pregunta %>" value="<%= data[j].texto %>"><%= data[j].texto %></input>
+      <br>
+      <% } else{%> 
+        <input type="textarea" class="form-control" placeholder="Respuesta" name="respuesta" value="">
+        <% } %>
+        <% i=j; %>
+        <% ++j %>
+        <% } %>
+        <% } %>
+  <% } %> 
+        <button type="submit" class="btn mt-5 rounded-5 ">Finalizar Encuesta</button>
+      </form>
+
+    
+  </div> 
+    
+    
+  </div>
+  
+  
+</body>
+</html>

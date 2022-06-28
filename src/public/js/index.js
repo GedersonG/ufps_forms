@@ -1,0 +1,1 @@
+fetch('https://ufpsforms.herokuapp.com/api/poblacion/poblaciones/').then(response => response.json()).then(data => console.log(data));
